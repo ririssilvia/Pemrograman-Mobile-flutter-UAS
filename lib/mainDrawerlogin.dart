@@ -1,3 +1,4 @@
+import 'package:crud/listKategori.dart';
 import 'package:crud/listProduk.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -176,7 +177,7 @@ class MainNavRegisterState extends State<MainNavRegister> {
                             context,
                             MaterialPageRoute(
                              
-                              builder: (context) => ListViewKategori(),
+                              builder: (context) => ListKategoriScreen(),
                             ));
         }
       ),

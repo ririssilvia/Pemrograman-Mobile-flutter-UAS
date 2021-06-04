@@ -1,52 +1,42 @@
-import 'package:crud/listProduk.dart';
+
+import 'package:crud/listKategori.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class AddProdukScreen extends StatefulWidget {
+class AddKategoriScreen extends StatefulWidget {
   @override
-  _AddProdukScreenState createState() => _AddProdukScreenState();
+  _AddKategoriScreenState createState() => _AddKategoriScreenState();
 }
 
-class _AddProdukScreenState extends State<AddProdukScreen> {
+class _AddKategoriScreenState extends State<AddKategoriScreen> {
   Color primaryColor = Color(0xff18203d);
   Color secondaryColor = Color(0xff232c51);
   Color logoGreen = Color(0xff25bcbb);
 
-  TextEditingController nameController = TextEditingController();
-  TextEditingController codeController = TextEditingController();
+  TextEditingController nameKategoriController = TextEditingController();
   TextEditingController deskripsiController = TextEditingController();
-  TextEditingController hargaController = TextEditingController();
-  TextEditingController stokController = TextEditingController();
-  TextEditingController imageUrlController = TextEditingController();
 
-  Map<String, dynamic> productToAdd;
+  Map<String, dynamic> kategoriToAdd;
   CollectionReference collectionReference =
-      FirebaseFirestore.instance.collection('produk');
+      FirebaseFirestore.instance.collection('kategori');
 
-  addproduct() {
-    productToAdd = {
-      "name": nameController.text,
-      "code": codeController.text,
-      "deskripsi": deskripsiController.text,
-      "harga": hargaController.text,
-      "stok": stokController.text,
-      "imageUrl": imageUrlController.text,
+  addkategori() {
+    kategoriToAdd = {
+      "nameKategori": nameKategoriController.text,
+      "deskripsiKategori": deskripsiController.text,
     };
 
     collectionReference
-        .add(productToAdd)
+        .add(kategoriToAdd)
         .whenComplete(() => print('Added to the database'));
-    clearInputText();
+        clearInputText();
   }
 
   void clearInputText() {
-    nameController.text = "";
-    codeController.text = "";
+    nameKategoriController.text = "";
     deskripsiController.text = "";
-    hargaController.text = "";
-    stokController.text = "";
-    imageUrlController.text = "";
+
   }
 
   _buildTextField(TextEditingController controller, String labelText) {
@@ -80,11 +70,11 @@ class _AddProdukScreenState extends State<AddProdukScreen> {
               ),
               onPressed: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) =>ListProdukScreen()));
+                    MaterialPageRoute(builder: (context) =>ListKategoriScreen()));
               },
             )
           ],
-        title: Text('Add Products '),
+        title: Text('Add Kategori'),
         //centerTitle: true,
         backgroundColor: Colors.indigo[900],
         leading: new IconButton(
@@ -100,7 +90,7 @@ class _AddProdukScreenState extends State<AddProdukScreen> {
           child: Column(
             children: [
               Text(
-                "ADD PRODUK",
+                "ADD KATEGORI",
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 30,
@@ -108,17 +98,9 @@ class _AddProdukScreenState extends State<AddProdukScreen> {
                 textAlign: TextAlign.center,
               ),
               SizedBox(height: 30),
-              _buildTextField(nameController, 'Nama Produk'),
-              SizedBox(height: 20),
-              _buildTextField(codeController, 'Code '),
+              _buildTextField(nameKategoriController, 'Nama Kategori'),
               SizedBox(height: 20),
               _buildTextField(deskripsiController, 'Deskripsi '),
-              SizedBox(height: 20),
-              _buildTextField(hargaController, 'Harga '),
-              SizedBox(height: 20),
-              _buildTextField(stokController, 'Stok '),
-              SizedBox(height: 20),
-              _buildTextField(imageUrlController, 'image Url '),
               SizedBox(height: 20),
               // ignore: deprecated_member_use
               FlatButton(
@@ -128,7 +110,7 @@ class _AddProdukScreenState extends State<AddProdukScreen> {
                 ),
                 color: logoGreen,
                 onPressed: () {
-                  addproduct();
+                  addkategori();
                   //clearInputText();
                 },
               )

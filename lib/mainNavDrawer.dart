@@ -1,3 +1,4 @@
+import 'package:crud/listKategori.dart';
 import 'package:crud/listProduk.dart';
 import 'package:flutter/material.dart';
 import 'package:crud/homeScreen/homeKategori.dart';
@@ -85,7 +86,7 @@ class MainNavDrawer extends StatelessWidget {
                             context,
                             MaterialPageRoute(
                              
-                              builder: (context) => ListViewKategori(),
+                              builder: (context) => ListKategoriScreen(),
                             ));
         }
       ),
