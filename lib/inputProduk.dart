@@ -72,9 +72,7 @@ class _AddProdukScreenState extends State<AddProdukScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-          actions: [
+         actions: [
             IconButton(
               icon: Icon(
                 Icons.folder_open,
@@ -86,7 +84,17 @@ class _AddProdukScreenState extends State<AddProdukScreen> {
               },
             )
           ],
+        title: Text('Products List'),
+        //centerTitle: true,
+        backgroundColor: Colors.indigo[900],
+        leading: new IconButton(
+          icon: new Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pop(context);
+          },
         ),
+      ),
+      backgroundColor: primaryColor,
         body: SingleChildScrollView(
           padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
           child: Column(

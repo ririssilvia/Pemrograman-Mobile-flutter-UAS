@@ -1,3 +1,4 @@
+import 'package:crud/auth/intro/welcome.dart';
 import 'package:crud/inputProduk.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -19,11 +20,16 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Auth',
-      theme: ThemeData(
+    //   theme: ThemeData(
+    //     primaryColor:Colors.indigo,
+    //     scaffoldBackgroundColor: Color(0xff18203d),
+    //   ),
+    //  home: AddProdukScreen(),
+    theme: ThemeData(
         primaryColor:Colors.indigo,
-        scaffoldBackgroundColor: Color(0xff18203d),
+        scaffoldBackgroundColor: Colors.white,
       ),
-     home: AddProdukScreen(),
+     home: WelcomeScreen(),
       
     );
   }
