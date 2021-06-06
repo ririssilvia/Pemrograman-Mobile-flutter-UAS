@@ -178,7 +178,7 @@ class AddProdukFormState extends State<AddProdukForm> {
                               //String docId = snapshot.data.docs[i].id;
                               String name = snap['namaKategori'];
                               currencyKategori.add(
-                                DropdownMenuItem(child: Text(name,
+                                DropdownMenuItem(child: Text("${name}",
                               style: TextStyle( color: Colors.black),
                             ),
                             value: name,
@@ -207,8 +207,8 @@ class AddProdukFormState extends State<AddProdukForm> {
                             value: selectedCurrency,
                             isExpanded: false,
                             hint: new Text(
-                              "Choose Currency Type",
-                              style: TextStyle(color: Color(0xff11b719)),
+                              "Pilih Kategori Produk",
+                              style: TextStyle(color: Colors.black),
                             ),
                           ),
                         ],
@@ -348,7 +348,7 @@ class AddProdukFormState extends State<AddProdukForm> {
                         padding: EdgeInsets.symmetric(vertical: 20.0),
                         child: Text("Add data",
                             style: TextStyle(
-                                color: Colors.indigoAccent, fontSize: 18.0)),
+                                color: Colors.white, fontSize: 18.0)),
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(30.0)),
                         elevation: 5.0,
@@ -357,7 +357,7 @@ class AddProdukFormState extends State<AddProdukForm> {
                           await DatabaseProduk.addProduk(
                               namaProduk: namaProdukController.text,
                               code:  codeController.text,
-                              kategori: kategoriController.text,
+                              kategori: selectedCurrency,
                               deskripsi: deskripsiController.text,
                               harga: int.tryParse(hargaController.text),
                               stok: int.tryParse(stokController.text),

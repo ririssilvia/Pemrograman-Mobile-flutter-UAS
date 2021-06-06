@@ -26,14 +26,14 @@ class KategoriList extends StatelessWidget {
                 String deskripsi = kategoriInfo['deskripsi'];
 
                 return Card(
-                  color: Colors.indigoAccent,
+                  color: Colors.indigo[200],
                   elevation: 3.0,
                   child: ListTile(
                       leading: CircleAvatar(
-                        backgroundColor: Colors.indigoAccent,
+                        backgroundColor: Colors.indigo,
                         child: Icon(
                           Icons.category,
-                          color: Colors.black,
+                          color: Colors.lightBlue,
                         ),
                       ),
                       title: Container(

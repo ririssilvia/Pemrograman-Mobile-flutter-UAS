@@ -24,11 +24,11 @@ class AddProdukScreen extends StatelessWidget {
         _imageUrlNode.unfocus();
       },
       child: Scaffold(
-        backgroundColor: Colors.indigo,
+        backgroundColor: Colors.white,
         appBar: AppBar(
           elevation: 0,
-          backgroundColor: Colors.white,
-          title: Text("Prdouk"),
+          backgroundColor: Colors.indigo,
+          title: Text("Tambah Prdouk"),
         ),
         body: SafeArea(
           child: Padding(

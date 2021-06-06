@@ -35,13 +35,35 @@ class _SuccessScreenState extends State<SuccessScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             mainAxisSize: MainAxisSize.max,
             children: <Widget>[
-              Text(
-                'Hallo',
-                style: TextStyle(
-                    fontSize: 30,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black54),
-              ),
+              Row(
+                  children: [
+                    Text(
+                      "Hello",
+                      style: TextStyle(
+                        fontSize: 48,
+                        fontWeight: FontWeight.w900,
+                        letterSpacing: 1.5,
+                      ),
+                    ),
+                    SizedBox(width: 16),
+                    Expanded(
+                      child: Divider(
+                        thickness: 3,
+                        // color: Colors.white,
+                      ),
+                    ),
+                  ],
+                ),
+                Text(
+                  "Admin",
+                  style: TextStyle(
+                    fontSize: 35,
+                    fontWeight: FontWeight.w900,
+                    letterSpacing: 1.5,
+                  ),
+                  textAlign: TextAlign.right,
+                ),
+
              
               SizedBox(height: 40),
               CircleAvatar(
@@ -62,8 +84,8 @@ class _SuccessScreenState extends State<SuccessScreen> {
               Text(
                 auth.currentUser.email,
                 style: TextStyle(
-                    fontSize: 25,
-                    color: Colors.deepPurple,
+                    fontSize: 20,
+                    color: Colors.black,
                     fontWeight: FontWeight.bold),
               ),
               SizedBox(height: 40),

@@ -31,16 +31,16 @@ class ProdukList extends StatelessWidget {
                
 
                 return Card(
-                  color: Colors.indigoAccent,
+                  color: Colors.indigo[200],
                   elevation: 3.0,
                   child: ListTile(
-                    leading: CircleAvatar(
-                      backgroundColor:Colors.indigo,
-                      child: Icon(
-                        Icons.production_quantity_limits,
-                        color: Colors.lightBlue,
-                      ),
+                    leading: Image.network(
+                      imageUrl,
+                              height: 100,
+                              fit: BoxFit.cover,
+                              width: 100,
                     ),
+                    
                     title: Row(children: [
                       Container(
                         padding: EdgeInsets.only(right: 5),
@@ -91,13 +91,13 @@ class ProdukList extends StatelessWidget {
                             style: TextStyle(fontSize: 15),
                           ),
                         ),
-                         Container(
-                          padding: EdgeInsets.only(top: 5),
-                          child: Text(
-                            imageUrl,
-                            style: TextStyle(fontSize: 15),
-                          ),
-                        ),
+                        //  Container(
+                        //   padding: EdgeInsets.only(top: 5),
+                        //   child: Text(
+                        //     imageUrl,
+                        //     style: TextStyle(fontSize: 15),
+                        //   ),
+                        // ),
                       ],
                     ),
                     trailing: GestureDetector(
@@ -106,7 +106,7 @@ class ProdukList extends StatelessWidget {
                         onTap: ()  {
                           showDialog(context: context, builder:(context) => AlertDialog(
                             title : Text("Delete"),
-                            content: Text("Are you sure to delete this note? "),
+                            content: Text("Are you sure to delete list Produk? "),
                             actions: <Widget>[
                               FlatButton(onPressed: () {
                                 Navigator.pop(context);

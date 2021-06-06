@@ -42,7 +42,7 @@ class MainNavRegisterState extends State<MainNavRegister> {
                 style: TextStyle(
                     fontSize: 30,
                     fontWeight: FontWeight.bold,
-                    color: Colors.black54),
+                    color: Colors.black),
               ),
              
               SizedBox(height: 40),
@@ -118,7 +118,7 @@ class MainNavRegisterState extends State<MainNavRegister> {
         accountEmail: Text(
                auth.currentUser.email,
                 style: TextStyle(
-                    fontSize: 25,
+                    fontSize: 20,
                     color: Colors.white,
                     fontWeight: FontWeight.bold),
               ),
@@ -136,7 +136,7 @@ class MainNavRegisterState extends State<MainNavRegister> {
                 backgroundImage: NetworkImage(
                   "https://clubsports.gcu.edu/wp-content/uploads/Coach-Avator.png"
                 ),
-                radius: 60,
+                radius: 50,
                 backgroundColor: Colors.transparent,
               ),
             ),   
@@ -189,7 +189,7 @@ class MainNavRegisterState extends State<MainNavRegister> {
       ),
       Expanded(
         child: Container(
-          height: 300,
+          height: 250,
         ),
       ),
       Divider(

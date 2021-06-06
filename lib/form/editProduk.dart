@@ -177,7 +177,7 @@ class EditProdukFormState extends State<EditProdukForm> {
                 //   ),
                 // ),
                 SizedBox(height: 40.0),
-                 StreamBuilder<QuerySnapshot>(
+                  StreamBuilder<QuerySnapshot>(
                   stream:  DatabaseKatgeori.readKategori(),
                   builder: (context, snapshot) {
                     if (!snapshot.hasData)
@@ -189,7 +189,7 @@ class EditProdukFormState extends State<EditProdukForm> {
                               //String docId = snapshot.data.docs[i].id;
                               String name = snap['namaKategori'];
                               currencyKategori.add(
-                                DropdownMenuItem(child: Text(name,
+                                DropdownMenuItem(child: Text("${name}",
                               style: TextStyle( color: Colors.black),
                             ),
                             value: name,
@@ -218,8 +218,8 @@ class EditProdukFormState extends State<EditProdukForm> {
                             value: selectedCurrency,
                             isExpanded: false,
                             hint: new Text(
-                              "Choose Currency Type",
-                              style: TextStyle(color: Color(0xff11b719)),
+                              "Pilih Kategori Produk",
+                              style: TextStyle(color: Colors.black),
                             ),
                           ),
                         ],
@@ -364,17 +364,17 @@ class EditProdukFormState extends State<EditProdukForm> {
                     padding: EdgeInsets.symmetric(vertical: 20.0),
                     child: Text("Edit data",
                         style: TextStyle(
-                            color: Colors.indigoAccent, fontSize: 18.0)),
+                            color: Colors.white, fontSize: 18.0)),
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30.0)),
                     elevation: 5.0,
-                    fillColor: Colors.indigoAccent,
+                    fillColor: Colors.indigo,
                     onPressed: () async {
                       await DatabaseProduk.updateProduk(
                           docId: widget.documentId,
                           namaProduk: namaProdukController.text,
                           code: codeController.text,
-                          kategori: kategoriController.text,
+                          kategori: selectedCurrency,
                           deskripsi: deskripsiController.text,
                           harga: int.tryParse(hargaController.text),
                           stok: int.tryParse(stokController.text),

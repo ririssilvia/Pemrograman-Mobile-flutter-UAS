@@ -19,14 +19,14 @@ class MainNavDrawer extends StatelessWidget {
         accountName:  Text(
                 name,
                 style: TextStyle(
-                    fontSize: 25,
+                    fontSize: 20,
                     color: Colors.white,
                     fontWeight: FontWeight.bold),
               ),
         accountEmail: Text(
                email,
                 style: TextStyle(
-                    fontSize: 25,
+                    fontSize: 15,
                     color: Colors.white,
                     fontWeight: FontWeight.bold),
               ),
@@ -44,7 +44,7 @@ class MainNavDrawer extends StatelessWidget {
                 backgroundImage: NetworkImage(
                   imageUrl,
                 ),
-                radius: 60,
+                radius: 50,
                 backgroundColor: Colors.transparent,
               ),
             ),
@@ -97,7 +97,7 @@ class MainNavDrawer extends StatelessWidget {
       ),
       Expanded(
         child: Container(
-          height: 300,
+          height: 250,
         ),
       ),
       Divider(

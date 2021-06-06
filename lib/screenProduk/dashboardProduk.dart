@@ -17,7 +17,7 @@ class _DashboardProdukScreenState extends State<DashboardProdukScreen> {
      backgroundColor: Colors.white,
         appBar: AppBar(
           elevation: 0,
-          backgroundColor: Colors.black,
+          backgroundColor: Colors.indigo,
           title: Text("Produk"),
         ),
       floatingActionButton: FloatingActionButton(
@@ -28,7 +28,7 @@ class _DashboardProdukScreenState extends State<DashboardProdukScreen> {
             ),
           );
         },
-        backgroundColor: Colors.black,
+        backgroundColor: Colors.indigo,
         child: Icon(
           Icons.add,
           color: Colors.white,

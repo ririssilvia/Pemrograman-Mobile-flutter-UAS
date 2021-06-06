@@ -53,8 +53,8 @@ class _EditProdukScreenState extends State<EditProdukScreen> {
         backgroundColor: Colors.white,
         appBar: AppBar(
           elevation: 0,
-          backgroundColor: Colors.black,
-          title: Text("Produk"),
+          backgroundColor: Colors.indigo,
+          title: Text("Edit Produk"),
         ),
         body: SafeArea(
           child: Padding(
