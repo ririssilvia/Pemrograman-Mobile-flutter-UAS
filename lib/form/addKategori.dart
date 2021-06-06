@@ -108,11 +108,11 @@ class AddKategoriFormState extends State<AddKategoriForm> {
                     padding: EdgeInsets.symmetric(vertical: 20.0),
                     child: Text("Add data",
                         style: TextStyle(
-                            color: Colors.indigo, fontSize: 18.0)),
+                            color: Colors.white, fontSize: 18.0)),
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30.0)),
                     elevation: 5.0,
-                    fillColor: Colors.black,
+                    fillColor: Colors.indigo,
                     onPressed: ()async{
                       await DatabaseKatgeori.addKategori(
                         namaKategori : namaKategoriController.text,

@@ -1,8 +1,8 @@
+import 'package:crud/screenKategori/dashboardKategori.dart';
+import 'package:crud/screenProduk/dashboardProduk.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:crud/auth/intro/welcome.dart';
-import 'package:crud/homeScreen/homeKategori.dart';
-import 'package:crud/homeScreen/homeProduct.dart';
 import 'package:crud/services/auth.dart';
 
 
@@ -173,7 +173,7 @@ class _SuccessScreenState extends State<SuccessScreen> {
                             context,
                             MaterialPageRoute(
                              
-                              builder: (context) => ListViewProduct(),
+                              builder: (context) => DashboardProdukScreen(),
                             ));
         }
           ),
@@ -196,7 +196,7 @@ class _SuccessScreenState extends State<SuccessScreen> {
                             context,
                             MaterialPageRoute(
                              
-                              builder: (context) => ListViewKategori(),
+                              builder: (context) => DashboardKategoriScreen(),
                             ));
         }
       ),

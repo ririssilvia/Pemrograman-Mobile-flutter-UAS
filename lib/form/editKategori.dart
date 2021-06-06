@@ -122,7 +122,7 @@ class EditKategoriFormState extends State<EditKategoriForm> {
                     padding: EdgeInsets.symmetric(vertical: 20.0),
                     child: Text("Update data",
                         style: TextStyle(
-                            color: Colors.indigoAccent, fontSize: 18.0)),
+                            color: Colors.white, fontSize: 18.0)),
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30.0)),
                     elevation: 5.0,

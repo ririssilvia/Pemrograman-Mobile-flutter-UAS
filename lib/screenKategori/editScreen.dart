@@ -33,8 +33,8 @@ class _EditKategoriState extends State<EditKategoriScreen> {
         backgroundColor: Colors.white,
         appBar: AppBar(
           elevation: 0,
-          backgroundColor: Colors.black,
-          title: Text("Kategori"),
+          backgroundColor: Colors.indigo,
+          title: Text("Edit Kategori"),
         ),
         body: SafeArea(
           child: Padding(
