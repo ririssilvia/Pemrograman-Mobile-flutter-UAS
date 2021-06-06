@@ -65,7 +65,7 @@ class KategoriList extends StatelessWidget {
                         onTap: ()  {
                           showDialog(context: context, builder:(context) => AlertDialog(
                             title : Text("Delete"),
-                            content: Text("Are you sure to delete this category ? "),
+                            content: Text("Are you sure to delete  category ? "),
                             actions: <Widget>[
                               FlatButton(onPressed: () {
                                 Navigator.pop(context);
