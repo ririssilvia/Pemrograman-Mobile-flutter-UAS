@@ -1,3 +1,5 @@
+import 'package:crud/database/databaseKategori.dart';
+import 'package:crud/database/databaseProduk.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:crud/Auth/intro/welcome.dart';
@@ -15,6 +17,8 @@ class _RegisterPageState extends State<RegisterPage> {
   TextEditingController _emailController = new TextEditingController();
   TextEditingController _passController = new TextEditingController();
   //tambahkan form untuk validasi form
+  FirebaseAuth _auth = FirebaseAuth.instance;
+  
   final _formKey = GlobalKey<FormState>();
    var authHandler = new Auth();
 
@@ -215,6 +219,8 @@ class _RegisterPageState extends State<RegisterPage> {
                                     .createUserWithEmail(_emailController.text,
                                         _passController.text)
                                     .then((User user) {
+                                DatabaseKatgeori.userUid =_auth.currentUser.uid;
+                                DatabaseProduk.userUid = _auth.currentUser.uid;
                                   Navigator.push(
                                       context,
                                       new MaterialPageRoute(

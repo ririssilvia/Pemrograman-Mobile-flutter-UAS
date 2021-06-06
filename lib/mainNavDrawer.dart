@@ -1,8 +1,6 @@
-import 'package:crud/listKategori.dart';
-import 'package:crud/listProduk.dart';
+import 'package:crud/screenKategori/dashboardKategori.dart';
+import 'package:crud/screenProduk/dashboardProduk.dart';
 import 'package:flutter/material.dart';
-import 'package:crud/homeScreen/homeKategori.dart';
-import 'package:crud/homeScreen/homeProduct.dart';
 import 'package:crud/homeScreen/profile.dart';
 import 'package:crud/services/sign_in.dart';
 
@@ -63,7 +61,7 @@ class MainNavDrawer extends StatelessWidget {
                             context,
                             MaterialPageRoute(
                              
-                              builder: (context) => ListProdukScreen(),
+                              builder: (context) => DashboardProdukScreen(),
                             ));
         }
           ),
@@ -86,7 +84,7 @@ class MainNavDrawer extends StatelessWidget {
                             context,
                             MaterialPageRoute(
                              
-                              builder: (context) => ListKategoriScreen(),
+                              builder: (context) => DashboardKategoriScreen(),
                             ));
         }
       ),

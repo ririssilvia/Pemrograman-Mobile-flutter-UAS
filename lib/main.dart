@@ -1,5 +1,5 @@
 import 'package:crud/auth/intro/welcome.dart';
-import 'package:crud/inputProduk.dart';
+
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 

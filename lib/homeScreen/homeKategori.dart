@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:crud/form/formKategori.dart';
 import 'package:crud/mainNavDrawer.dart';
 
 
@@ -118,7 +117,7 @@ class _ListViewKategoriState extends State<ListViewKategori > {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => FormKategoriScreen(),
+                           // builder: (context) => FormKategoriScreen(),
                           ));
                     },
         ),
