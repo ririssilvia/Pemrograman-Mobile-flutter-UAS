@@ -3,13 +3,11 @@ import 'package:crud/database/databaseProduk.dart';
 import 'package:crud/screenProduk/editScren.dart';
 import 'package:flutter/material.dart';
 
-
 class ProdukList extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: StreamBuilder<QuerySnapshot>(
+        child: StreamBuilder<QuerySnapshot>(
       stream: DatabaseProduk.readProduk(),
       builder: (context, snapshot) {
         if (snapshot.hasError) {
@@ -28,7 +26,6 @@ class ProdukList extends StatelessWidget {
                 int harga = produkInfo['harga'];
                 int stok = produkInfo['stok'];
                 String imageUrl = produkInfo['imageUrl'];
-               
 
                 return Card(
                   color: Colors.indigo[200],
@@ -36,16 +33,15 @@ class ProdukList extends StatelessWidget {
                   child: ListTile(
                     leading: Image.network(
                       imageUrl,
-                              height: 100,
-                              fit: BoxFit.cover,
-                              width: 100,
+                      height: 100,
+                      fit: BoxFit.cover,
+                      width: 100,
                     ),
-                    
                     title: Row(children: [
                       Container(
                         padding: EdgeInsets.only(right: 5),
                         child: Text(
-                          namaProduk ,
+                          namaProduk,
                           style: TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 17),
                         ),
@@ -101,25 +97,64 @@ class ProdukList extends StatelessWidget {
                       ],
                     ),
                     trailing: GestureDetector(
-                        //widget untuk mendeteksi sentuhan
-                        child: Icon(Icons.delete),
-                        onTap: ()  {
-                          showDialog(context: context, builder:(context) => AlertDialog(
-                            title : Text("Delete"),
-                            content: Text("Are you sure to delete list Produk? "),
-                            actions: <Widget>[
-                              FlatButton(onPressed: () {
-                                Navigator.pop(context);
-                              }, child: Text("Cancel")),
-                              FlatButton(onPressed: () async{
-                                await DatabaseProduk.deleteProduk(docId: docID);
-                                Navigator.pop(context);
-                              }, child: Text("Yes"))
-                            ],
-                          ));
-                          
-                        },
+                      // //widget untuk mendeteksi sentuhan
+                      // child: Icon(Icons.delete,
+                      //  color: Colors.red[800]),
+
+                      // onTap: ()  {
+                      //   showDialog(context: context, builder:(context) => AlertDialog(
+                      //     title : Text("Delete"),
+                      //     content: Text("Are you sure to delete list Produk? "),
+                      //     actions: <Widget>[
+                      //       FlatButton(onPressed: () {
+                      //         Navigator.pop(context);
+                      //       }, child: Text("Cancel")),
+                      //       FlatButton(onPressed: () async{
+                      //         await DatabaseProduk.deleteProduk(docId: docID);
+                      //         Navigator.pop(context);
+                      //       }, child: Text("Yes"))
+                      //     ],
+                      //   ));
+                      // },
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          IconButton(
+                            icon: Icon(Icons.visibility,color: Colors.black),
+                             onPressed: (){
+                               
+                             }
+                          ),
+                          //button hapus data
+                          IconButton(
+                            icon: Icon(Icons.delete, color: Colors.red[800]),
+                            onPressed: () {
+                              showDialog(
+                                  context: context,
+                                  builder: (context) => AlertDialog(
+                                        title: Text("Delete"),
+                                        content: Text(
+                                            "Are you sure to delete list Produk? "),
+                                        actions: <Widget>[
+                                          FlatButton(
+                                              onPressed: () {
+                                                Navigator.pop(context);
+                                              },
+                                              child: Text("Cancel")),
+                                          FlatButton(
+                                              onPressed: () async {
+                                                await DatabaseProduk
+                                                    .deleteProduk(docId: docID);
+                                                Navigator.pop(context);
+                                              },
+                                              child: Text("Yes"))
+                                        ],
+                                      ));
+                            },
+                          )
+                        ],
                       ),
+                    ),
                     onTap: () => Navigator.of(context).push(MaterialPageRoute(
                         builder: (context) => EditProdukScreen(
                               currentNamaProduk: namaProduk,
