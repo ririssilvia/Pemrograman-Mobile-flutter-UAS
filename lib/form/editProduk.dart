@@ -74,288 +74,159 @@ class EditProdukFormState extends State<EditProdukForm> {
           SizedBox(
             height: 30,
           ),
-          // SvgPicture.asset(
-          //   "icons/add_note.svg",
-          //   height: 150,
-          // ),
           Padding(
             padding:
                 const EdgeInsets.symmetric(horizontal: 20.0, vertical: 1.0),
             child: Column(
               children: <Widget>[
-                SizedBox(
-                  height: 10.0,
-                ),
-                Container(
-                  padding: EdgeInsets.fromLTRB(5.0, 5.0, 5.0, 10.0),
-                  decoration: BoxDecoration(
-                    color: Colors.indigoAccent,
-                    borderRadius: BorderRadius.circular(10),
-                    border: Border.all(color: Colors.indigo, width: 1),
-                  ),
-                  child:
-
-                      ///
-                      TextFormField(
+              StreamBuilder<QuerySnapshot>(
+                    stream: DatabaseKatgeori.readKategori(),
+                    builder: (context, snapshot) {
+                      if (!snapshot.hasData)
+                        const Text("Loading.....");
+                      else {
+                        List<DropdownMenuItem> currencyKategori = [];
+                        for (int i = 0; i < snapshot.data.docs.length; i++) {
+                          var snap = snapshot.data.docs[i].data();
+                          //String docId = snapshot.data.docs[i].id;
+                          String name = snap['namaKategori'];
+                          currencyKategori.add(
+                            DropdownMenuItem(
+                              child: Text(
+                                "${name}",
+                                style: TextStyle(color: Colors.black),
+                              ),
+                              value: name,
+                            ),
+                          );
+                        }
+                        return Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            SizedBox(width: 50.0),
+                            DropdownButton(
+                               dropdownColor: Colors.indigo[50],
+                              items: currencyKategori,
+                              onChanged: (currencyValue) {
+                                final snackBar = SnackBar(
+                                  content: Text(
+                                    'Selected Currency value is $currencyValue',
+                                    style: TextStyle(color: Colors.black),
+                                  ),
+                                );
+                                Scaffold.of(context).showSnackBar(snackBar);
+                                setState(() {
+                                  selectedCurrency = currencyValue;
+                                });
+                              },
+                              value: selectedCurrency,
+                              isExpanded: false,
+                              hint: new Text(
+                                "Pilih Kategori Produk",
+                                style: TextStyle(color: Colors.black),
+                              ),
+                            ),
+                          ],
+                        );
+                      }
+                    }),
+               
+               
+               
+                
+                  
+               
+                
+                Padding(
+                  padding: EdgeInsets.all(5),
+                  child: TextField(
                     controller: namaProdukController,
                     focusNode: widget.focusNamaProduk,
                     keyboardType: TextInputType.text,
-                    cursorColor: Colors.black,
                     decoration: InputDecoration(
-                        contentPadding: EdgeInsets.fromLTRB(5, 5.0, 5.0, 0),
-                        labelText: "Nama Produk",
-                        border: InputBorder.none),
-                    validator: (value) {
-                      if (value.isEmpty) {
-                        return 'Please fill this section';
-                      }
-                      return null;
-                    },
-                    maxLines: 1,
+                      labelText: 'Nama Produk',
+                      icon: Icon(Icons.production_quantity_limits_sharp),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(5.0),
+                      ),
+                    ),
                   ),
                 ),
-                SizedBox(
-                  height: 10.0,
-                ),
-                Container(
-                  padding: EdgeInsets.fromLTRB(5.0, 5.0, 5.0, 10.0),
-                  decoration: BoxDecoration(
-                    color: Colors.indigoAccent,
-                    borderRadius: BorderRadius.circular(10),
-                    border: Border.all(color: Colors.indigo, width: 1),
-                  ),
-                  child:
-
-                      ///
-                      TextFormField(
+                 Padding(
+                  padding: EdgeInsets.all(5),
+                  child: TextField(
                     controller: codeController,
                     focusNode: widget.focusCode,
                     keyboardType: TextInputType.text,
-                    cursorColor: Colors.black,
                     decoration: InputDecoration(
-                        contentPadding: EdgeInsets.fromLTRB(5, 5.0, 5.0, 0),
-                        labelText: "code Produk",
-                        border: InputBorder.none),
-                    validator: (value) {
-                      if (value.isEmpty) {
-                        return 'Please fill this section';
-                      }
-                      return null;
-                    },
-                    maxLines: 1,
+                      labelText: 'Code Produk',
+                      icon: Icon(Icons.code),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(5.0),
+                      ),
+                    ),
                   ),
                 ),
-                SizedBox(
-                  height: 10.0,
-                ),
-                // Container(
-                //   padding: EdgeInsets.fromLTRB(5.0, 5.0, 5.0, 10.0),
-                //   decoration: BoxDecoration(
-                //     color: Colors.indigoAccent,
-                //     borderRadius: BorderRadius.circular(10),
-                //     border: Border.all(color: Colors.indigo, width: 1),
-                //   ),
-                //   child:
-
-                //       ///
-                //       TextFormField(
-                //     controller: kategoriController,
-                //     focusNode: widget.focusKategori,
-                //     keyboardType: TextInputType.text,
-                //     cursorColor: Colors.black,
-                //     decoration: InputDecoration(
-                //         contentPadding: EdgeInsets.fromLTRB(5, 5.0, 5.0, 0),
-                //         labelText: "kode Produk",
-                //         border: InputBorder.none),
-                //     validator: (value) {
-                //       if (value.isEmpty) {
-                //         return 'Please fill this section';
-                //       }
-                //       return null;
-                //     },
-                //     maxLines: 1,
-                //   ),
-                // ),
-                SizedBox(height: 40.0),
-                  StreamBuilder<QuerySnapshot>(
-                  stream:  DatabaseKatgeori.readKategori(),
-                  builder: (context, snapshot) {
-                    if (!snapshot.hasData)
-                      const Text("Loading.....");
-                    else {
-                      List<DropdownMenuItem> currencyKategori = [];
-                      for (int i = 0; i < snapshot.data.docs.length; i++) {
-                         var snap = snapshot.data.docs[i].data();
-                              //String docId = snapshot.data.docs[i].id;
-                              String name = snap['namaKategori'];
-                              currencyKategori.add(
-                                DropdownMenuItem(child: Text("${name}",
-                              style: TextStyle( color: Colors.black),
-                            ),
-                            value: name,
-                          ),
-                        );
-                      }
-                      return Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          
-                          SizedBox(width: 50.0),
-                          DropdownButton(
-                            items: currencyKategori,
-                            onChanged: (currencyValue) {
-                              final snackBar = SnackBar(
-                                content: Text(
-                                  'Selected Currency value is $currencyValue',
-                                  style: TextStyle(color: Colors.black),
-                                ),
-                              );
-                              Scaffold.of(context).showSnackBar(snackBar);
-                              setState(() {
-                                selectedCurrency = currencyValue;
-                              });
-                            },
-                            value: selectedCurrency,
-                            isExpanded: false,
-                            hint: new Text(
-                              "Pilih Kategori Produk",
-                              style: TextStyle(color: Colors.black),
-                            ),
-                          ),
-                        ],
-                      );
-                    }
-                  }),
-                SizedBox(
-                  height: 10.0,
-                ),
-                Container(
-                  padding: EdgeInsets.fromLTRB(5.0, 5.0, 5.0, 10.0),
-                  decoration: BoxDecoration(
-                    color: Colors.indigoAccent,
-                    borderRadius: BorderRadius.circular(10),
-                    border: Border.all(color: Colors.indigo, width: 1),
-                  ),
-                  child:
-
-                      ///
-                      TextFormField(
+                Padding(
+                  padding: EdgeInsets.all(5),
+                  child: TextField(
                     controller: deskripsiController,
                     focusNode: widget.focusDeskripsi,
                     keyboardType: TextInputType.text,
-                    cursorColor: Colors.black,
                     decoration: InputDecoration(
-                        contentPadding: EdgeInsets.fromLTRB(5, 5.0, 5.0, 0),
-                        labelText: "deskripsi Produk",
-                        border: InputBorder.none),
-                    validator: (value) {
-                      if (value.isEmpty) {
-                        return 'Please fill this section';
-                      }
-                      return null;
-                    },
-                    maxLines: 1,
+                      labelText: 'Deskripsi Produk',
+                      icon: Icon(Icons.description),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(5.0),
+                      ),
+                    ),
                   ),
                 ),
-                SizedBox(
-                  height: 10.0,
-                ),
-                Container(
-                  padding: EdgeInsets.fromLTRB(5.0, 5.0, 5.0, 10.0),
-                  decoration: BoxDecoration(
-                    color: Colors.indigoAccent,
-                    borderRadius: BorderRadius.circular(10),
-                    border: Border.all(color: Colors.indigo, width: 1),
-                  ),
-                  child:
-
-                      ///
-                      TextFormField(
-                    controller: hargaController,
+                  Padding(
+                  padding: EdgeInsets.all(5),
+                  child: TextField(
+                     controller: hargaController,
                     focusNode: widget.focusHarga,
                     keyboardType: TextInputType.text,
-                    cursorColor: Colors.black,
                     decoration: InputDecoration(
-                        contentPadding: EdgeInsets.fromLTRB(5, 5.0, 5.0, 0),
-                        labelText: "Harga Produk",
-                        border: InputBorder.none),
-                    validator: (value) {
-                      if (value.isEmpty) {
-                        return 'Please fill this section';
-                      }
-                      return null;
-                    },
-                    maxLines: 1,
+                      labelText: 'Harga Produk',
+                      icon: Icon(Icons.monetization_on),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(5.0),
+                      ),
+                    ),
                   ),
                 ),
-                SizedBox(
-                  height: 10.0,
-                ),
-                Container(
-                  padding: EdgeInsets.fromLTRB(5.0, 5.0, 5.0, 10.0),
-                  decoration: BoxDecoration(
-                    color: Colors.indigoAccent,
-                    borderRadius: BorderRadius.circular(10),
-                    border: Border.all(color: Colors.indigo, width: 1),
-                  ),
-                  child:
-
-                      ///
-                      TextFormField(
+                Padding(
+                  padding: EdgeInsets.all(5),
+                  child: TextField(
                     controller: stokController,
                     focusNode: widget.focusStok,
                     keyboardType: TextInputType.text,
-                    cursorColor: Colors.black,
                     decoration: InputDecoration(
-                        contentPadding: EdgeInsets.fromLTRB(5, 5.0, 5.0, 0),
-                        labelText: "Stok Produk",
-                        border: InputBorder.none),
-                    validator: (value) {
-                      if (value.isEmpty) {
-                        return 'Please fill this section';
-                      }
-                      return null;
-                    },
-                    maxLines: 1,
+                      labelText: 'Stok Produk',
+                      icon: Icon(Icons.shop),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(5.0),
+                      ),
+                    ),
                   ),
                 ),
-                SizedBox(
-                  height: 10.0,
-                ),
-                Container(
-                  padding: EdgeInsets.fromLTRB(5.0, 5.0, 5.0, 10.0),
-                  decoration: BoxDecoration(
-                    color: Colors.indigoAccent,
-                    borderRadius: BorderRadius.circular(10),
-                    border: Border.all(color: Colors.indigo, width: 1),
-                  ),
-                  child:
-
-                      ///
-                      TextFormField(
+                  Padding(
+                  padding: EdgeInsets.all(5),
+                  child: TextField(
                     controller: imageUrlController,
                     focusNode: widget.focusImageUrl,
                     keyboardType: TextInputType.text,
-                    cursorColor: Colors.black,
                     decoration: InputDecoration(
-                        contentPadding: EdgeInsets.fromLTRB(5, 5.0, 5.0, 0),
-                        labelText: "Image url",
-                        border: InputBorder.none),
-                    validator: (value) {
-                      if (value.isEmpty) {
-                        return 'Please fill this section';
-                      }
-                      return null;
-                    },
-                    maxLines: null,
+                      labelText: 'Image URL',
+                      icon: Icon(Icons.image),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(5.0),
+                      ),
+                    ),
                   ),
                 ),
-              ],
-            ),
-          ),
-          SizedBox(
-            height: 60,
-          ),
           Container(
               padding: EdgeInsets.all(20),
               child: SizedBox(
@@ -385,6 +256,9 @@ class EditProdukFormState extends State<EditProdukForm> {
               ))
         ],
       ),
+          )
+        ]
+      )
     );
   }
 }
