@@ -18,8 +18,8 @@ class AddScreenKategori extends StatelessWidget {
         backgroundColor: Colors.white,
         appBar: AppBar(
           elevation: 0,
-          backgroundColor: Colors.indigoAccent,
-          title: Text("Tambah Kategori"),
+          backgroundColor: Colors.indigo,
+          title: Text("Tambah Data Kategori"),
         ),
         body: SafeArea(
           child: Padding(

@@ -4,13 +4,11 @@ import 'package:crud/screenKategori/editScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-
 class KategoriList extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: StreamBuilder<QuerySnapshot>(
+        child: StreamBuilder<QuerySnapshot>(
       stream: DatabaseKatgeori.readKategori(),
       builder: (context, snapshot) {
         if (snapshot.hasError) {
@@ -29,13 +27,15 @@ class KategoriList extends StatelessWidget {
                   color: Colors.indigo[200],
                   elevation: 3.0,
                   child: ListTile(
-                      leading: CircleAvatar(
-                        backgroundColor: Colors.indigo,
-                        child: Icon(
-                          Icons.category,
-                          color: Colors.lightBlue,
-                        ),
-                      ),
+                      // leading: CircleAvatar(
+                      //   backgroundColor: Colors.indigo,
+                      //   child: Icon(
+                      //     Icons.category,
+                      //     color: Colors.lightBlue,
+                      //   ),
+                      // ),
+                      leading: Image.network(
+                          "https://cdn0.iconfinder.com/data/icons/infographic-orchid-vol-1/256/Colorful_Label-512.png"),
                       title: Container(
                         padding: EdgeInsets.only(right: 10),
                         child: Text(
@@ -61,22 +61,31 @@ class KategoriList extends StatelessWidget {
                       ),
                       trailing: GestureDetector(
                         //widget untuk mendeteksi sentuhan
-                        child: Icon(Icons.delete),
-                        onTap: ()  {
-                          showDialog(context: context, builder:(context) => AlertDialog(
-                            title : Text("Delete"),
-                            content: Text("Are you sure to delete  category ? "),
-                            actions: <Widget>[
-                              FlatButton(onPressed: () {
-                                Navigator.pop(context);
-                              }, child: Text("Cancel")),
-                              FlatButton(onPressed: () async{
-                                await DatabaseKatgeori.deleteKategori(docId: docID);
-                                Navigator.pop(context);
-                              }, child: Text("Yes"))
-                            ],
-                          ));
-                          
+                        child: Icon(Icons.delete,
+                        size: 35,
+                        color: Colors.red[800],),
+                        onTap: () {
+                          showDialog(
+                              context: context,
+                              builder: (context) => AlertDialog(
+                                    title: Text("Delete"),
+                                    content: Text(
+                                        "Are you sure to delete  category ? "),
+                                    actions: <Widget>[
+                                      FlatButton(
+                                          onPressed: () {
+                                            Navigator.pop(context);
+                                          },
+                                          child: Text("Cancel")),
+                                      FlatButton(
+                                          onPressed: () async {
+                                            await DatabaseKatgeori
+                                                .deleteKategori(docId: docID);
+                                            Navigator.pop(context);
+                                          },
+                                          child: Text("Yes"))
+                                    ],
+                                  ));
                         },
                       ),
                       onTap: () => Navigator.of(context).push(MaterialPageRoute(
