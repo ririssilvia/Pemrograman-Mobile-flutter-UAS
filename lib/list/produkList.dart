@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:crud/database/databaseProduk.dart';
-import 'package:crud/screenKategori/detailProduk.dart';
+import 'package:crud/screenProduk/detailProduk.dart';
 import 'package:crud/screenProduk/editScren.dart';
 import 'package:flutter/material.dart';
 
@@ -120,16 +120,16 @@ class ProdukList extends StatelessWidget {
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          IconButton(
-                              icon: Icon(Icons.visibility, color: Colors.black),
-                              onPressed: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) =>
-                                          DetailProduk(),
-                                    ));
-                              }),
+                          // IconButton(
+                          //     icon: Icon(Icons.visibility, color: Colors.black),
+                          //     onPressed: () {
+                          //       // Navigator.push(
+                          //       //     context,
+                          //       //     MaterialPageRoute(
+                          //       //       builder: (context) =>
+                          //       //           DetailProduk(),
+                          //       //     ));
+                          //     }),
                           //button hapus data
                           IconButton(
                             icon: Icon(Icons.delete, color: Colors.red[800]),

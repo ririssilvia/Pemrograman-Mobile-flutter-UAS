@@ -1,5 +1,6 @@
 import 'package:crud/list/produkList.dart';
 import 'package:crud/screenProduk/addScreen.dart';
+import 'package:crud/screenProduk/detailProduk.dart';
 import 'package:flutter/material.dart';
 
 
@@ -16,6 +17,18 @@ class _DashboardProdukScreenState extends State<DashboardProdukScreen> {
     return Scaffold(
      backgroundColor: Colors.white,
         appBar: AppBar(
+            actions: [
+            IconButton(
+              icon: Icon(
+                Icons.folder_open,
+                color: Colors.white,
+              ),
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) =>DetailProduk()));
+              },
+            )
+          ],
           elevation: 0,
           backgroundColor: Colors.indigo,
           title: Text("Produk"),
