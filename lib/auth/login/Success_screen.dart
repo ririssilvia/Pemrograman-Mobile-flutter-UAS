@@ -32,9 +32,11 @@ class _SuccessScreenState extends State<SuccessScreen> {
         ),
         child: Center(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            mainAxisSize: MainAxisSize.max,
+            
+            // mainAxisAlignment: MainAxisAlignment.center,
+            // mainAxisSize: MainAxisSize.max,
             children: <Widget>[
+              SizedBox(height: 40),
               Row(
                   children: [
                     Text(

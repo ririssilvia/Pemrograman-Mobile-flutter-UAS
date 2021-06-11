@@ -29,155 +29,153 @@ class ProdukList extends StatelessWidget {
                 String imageUrl = produkInfo['imageUrl'];
 
                 return Card(
-                  color: Colors.indigo[200],
-                  elevation: 3.0,
-                  child: ListTile(
-                    leading: Image.network(
-                      imageUrl,
-                      height: 100,
-                      fit: BoxFit.cover,
-                      width: 100,
-                    ),
-                    title: Row(children: [
-                      Container(
-                        padding: EdgeInsets.only(right: 5),
-                        child: Text(
-                          namaProduk,
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 20),
-                        ),
-                      ),
-                      // Container(
-                      //   padding: EdgeInsets.only(right: 10),
-                      //   child: Text(
-                      //     code,
-                      //     style: TextStyle(
-                      //         fontWeight: FontWeight.bold, fontSize: 17),
-                      //   ),
-                      // ),
-                    ]),
-                    subtitle: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Container(
-                          padding: EdgeInsets.only(top: 5),
-                          child: Text(
-                            kategori,
-                           style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 15),
-                        ),
-                        ),
-                        // Container(
-                        //   padding: EdgeInsets.only(top: 5),
-                        //   child: Text(
-                        //     deskripsi,
-                        //     style: TextStyle(fontSize: 15),
-                        //   ),
-                        // ),
-                        Container(
-                          padding: EdgeInsets.only(top: 5),
-                          child: Text(
-                            "$harga",
-                             style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 15),
-                        ),
-                          ),
-                        
-                        Container(
-                          padding: EdgeInsets.only(top: 5),
-                          child: Text(
-                            "$stok",
+                    color: Colors.indigo[200],
+                    elevation: 3.0,
+                    child: Row(children: <Widget>[
+                      new Container(
+                          padding: new EdgeInsets.all(5.0),
+                          child: Image.network(
+                            imageUrl,
+                            fit: BoxFit.fill,
+                            height: 125,
+                            width: 125,
+                          )),
+                      Expanded(
+                        child: ListTile(
+                          title: Text(
+                            namaProduk,
                             style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 15),
-                        ),
+                                fontWeight: FontWeight.bold, fontSize: 20),
                           ),
-                        
-                        //  Container(
-                        //   padding: EdgeInsets.only(top: 5),
-                        //   child: Text(
-                        //     imageUrl,
-                        //     style: TextStyle(fontSize: 15),
-                        //   ),
-                        // ),
-                      ],
-                    ),
-                    trailing: GestureDetector(
-                      // //widget untuk mendeteksi sentuhan
-                      // child: Icon(Icons.delete,
-                      //  color: Colors.red[800]),
+                          subtitle: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Container(
+                                padding: EdgeInsets.only(top: 5),
+                                child: Text(
+                                  kategori,
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 15),
+                                ),
+                              ),
+                              // Container(
+                              //   padding: EdgeInsets.only(top: 5),
+                              //   child: Text(
+                              //     deskripsi,
+                              //     style: TextStyle(fontSize: 15),
+                              //   ),
+                              // ),
+                              Container(
+                                padding: EdgeInsets.only(top: 5),
+                                child: Text(
+                                  "$harga",
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 15),
+                                ),
+                              ),
 
-                      // onTap: ()  {
-                      //   showDialog(context: context, builder:(context) => AlertDialog(
-                      //     title : Text("Delete"),
-                      //     content: Text("Are you sure to delete list Produk? "),
-                      //     actions: <Widget>[
-                      //       FlatButton(onPressed: () {
-                      //         Navigator.pop(context);
-                      //       }, child: Text("Cancel")),
-                      //       FlatButton(onPressed: () async{
-                      //         await DatabaseProduk.deleteProduk(docId: docID);
-                      //         Navigator.pop(context);
-                      //       }, child: Text("Yes"))
-                      //     ],
-                      //   ));
-                      // },
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          // IconButton(
-                          //     icon: Icon(Icons.visibility, color: Colors.black),
-                          //     onPressed: () {
-                          //       // Navigator.push(
-                          //       //     context,
-                          //       //     MaterialPageRoute(
-                          //       //       builder: (context) =>
-                          //       //           DetailProduk(),
-                          //       //     ));
-                          //     }),
-                          //button hapus data
-                          IconButton(
-                            icon: Icon(Icons.delete, color: Colors.red[800]),
-                            onPressed: () {
-                              showDialog(
-                                  context: context,
-                                  builder: (context) => AlertDialog(
-                                        title: Text("Delete"),
-                                        content: Text(
-                                            "Are you sure to delete list Produk? "),
-                                        actions: <Widget>[
-                                          FlatButton(
-                                              onPressed: () {
-                                                Navigator.pop(context);
-                                              },
-                                              child: Text("Cancel")),
-                                          FlatButton(
-                                              onPressed: () async {
-                                                await DatabaseProduk
-                                                    .deleteProduk(docId: docID);
-                                                Navigator.pop(context);
-                                              },
-                                              child: Text("Yes"))
-                                        ],
-                                      ));
-                            },
-                          )
-                        ],
-                      ),
-                    ),
-                    onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => EditProdukScreen(
-                              currentNamaProduk: namaProduk,
-                              currentCode: code,
-                              currentKategori: kategori,
-                              currentDeskripsi: deskripsi,
-                              currentHarga: harga,
-                              currentStok: stok,
-                              currentImageUrl: imageUrl,
-                              documentId: docID,
-                            ))),
-                  ),
-                );
+                              Container(
+                                padding: EdgeInsets.only(top: 5),
+                                child: Text(
+                                  "$stok",
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 15),
+                                ),
+                              ),
+
+                              //  Container(
+                              //   padding: EdgeInsets.only(top: 5),
+                              //   child: Text(
+                              //     imageUrl,
+                              //     style: TextStyle(fontSize: 15),
+                              //   ),
+                              // ),
+                            ],
+                          ),
+                          trailing: GestureDetector(
+                            // //widget untuk mendeteksi sentuhan
+                            // child: Icon(Icons.delete,
+                            //  color: Colors.red[800]),
+
+                            // onTap: ()  {
+                            //   showDialog(context: context, builder:(context) => AlertDialog(
+                            //     title : Text("Delete"),
+                            //     content: Text("Are you sure to delete list Produk? "),
+                            //     actions: <Widget>[
+                            //       FlatButton(onPressed: () {
+                            //         Navigator.pop(context);
+                            //       }, child: Text("Cancel")),
+                            //       FlatButton(onPressed: () async{
+                            //         await DatabaseProduk.deleteProduk(docId: docID);
+                            //         Navigator.pop(context);
+                            //       }, child: Text("Yes"))
+                            //     ],
+                            //   ));
+                            // },
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                // IconButton(
+                                //     icon: Icon(Icons.visibility, color: Colors.black),
+                                //     onPressed: () {
+                                //       // Navigator.push(
+                                //       //     context,
+                                //       //     MaterialPageRoute(
+                                //       //       builder: (context) =>
+                                //       //           DetailProduk(),
+                                //       //     ));
+                                //     }),
+                                //button hapus data
+                                IconButton(
+                                  icon: Icon(Icons.delete,
+                                      color: Colors.red[800]),
+                                  onPressed: () {
+                                    showDialog(
+                                        context: context,
+                                        builder: (context) => AlertDialog(
+                                              title: Text("Delete"),
+                                              content: Text(
+                                                  "Are you sure to delete list Produk? "),
+                                              actions: <Widget>[
+                                                FlatButton(
+                                                    onPressed: () {
+                                                      Navigator.pop(context);
+                                                    },
+                                                    child: Text("Cancel")),
+                                                FlatButton(
+                                                    onPressed: () async {
+                                                      await DatabaseProduk
+                                                          .deleteProduk(
+                                                              docId: docID);
+                                                      Navigator.pop(context);
+                                                    },
+                                                    child: Text("Yes"))
+                                              ],
+                                            ));
+                                  },
+                                )
+                              ],
+                            ),
+                          ),
+                          onTap: () =>
+                              Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (context) => EditProdukScreen(
+                                        currentNamaProduk: namaProduk,
+                                        currentCode: code,
+                                        currentKategori: kategori,
+                                        currentDeskripsi: deskripsi,
+                                        currentHarga: harga,
+                                        currentStok: stok,
+                                        currentImageUrl: imageUrl,
+                                        documentId: docID,
+                                      ))),
+                        ),
+                      )
+                    ]));
               });
         }
       },
