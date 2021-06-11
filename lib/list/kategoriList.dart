@@ -53,6 +53,7 @@ class KategoriList extends StatelessWidget {
                             padding: EdgeInsets.only(top: 5),
                             child: Text(
                               deskripsi,
+                              overflow: TextOverflow.ellipsis,
                               style: TextStyle(
                                   fontSize: 15, fontWeight: FontWeight.w700),
                             ),

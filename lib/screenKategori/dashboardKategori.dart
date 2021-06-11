@@ -1,5 +1,6 @@
 import 'package:crud/list/kategoriList.dart';
 import 'package:crud/screenKategori/addScreen.dart';
+import 'package:crud/screenKategori/detailKategori.dart';
 import 'package:flutter/material.dart';
 
 
@@ -16,9 +17,21 @@ class _DashboardKategoriState extends State<DashboardKategoriScreen> {
     return Scaffold(
      backgroundColor: Colors.white,
         appBar: AppBar(
+            actions: [
+            IconButton(
+              icon: Icon(
+                Icons.folder_open,
+                color: Colors.white,
+              ),
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) =>DetailKategori()));
+              },
+            )
+          ],
           elevation: 0,
           backgroundColor: Colors.indigo,
-          title: Text("Category"),
+          title: Text("Produk"),
         ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {

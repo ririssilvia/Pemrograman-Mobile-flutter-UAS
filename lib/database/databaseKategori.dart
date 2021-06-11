@@ -48,7 +48,7 @@ class DatabaseKatgeori {
     CollectionReference kategoriItemCollection =
         _mainCollection.doc(userUid).collection('kategori');
 
-    //return notesItemCollection.snapshots();
+    //return kategoriItemCollection.snapshots();
     return kategoriItemCollection.orderBy("namaKategori").snapshots();
   }
 
