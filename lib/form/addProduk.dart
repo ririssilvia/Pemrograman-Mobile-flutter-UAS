@@ -48,7 +48,9 @@ class AddProdukFormState extends State<AddProdukForm> {
           ),
           Padding(
               padding: const EdgeInsets.symmetric(horizontal: 1, vertical: 1),
-              child: Column(children: <Widget>[
+              child: Column
+              (children: <Widget>[
+                
                  StreamBuilder<QuerySnapshot>(
                     stream: DatabaseKatgeori.readKategori(),
                     builder: (context, snapshot) {
@@ -66,6 +68,7 @@ class AddProdukFormState extends State<AddProdukForm> {
                                 "${name}",
                                 style: TextStyle(color: Colors.black),
                               ),
+                              
                               value: name,
                             ),
                           );
@@ -73,6 +76,8 @@ class AddProdukFormState extends State<AddProdukForm> {
                         return Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
+                             Icon(Icons.category,
+                              size: 25.0, ),
                             SizedBox(width: 50.0),
                             DropdownButton(
                                dropdownColor: Colors.indigo[50],

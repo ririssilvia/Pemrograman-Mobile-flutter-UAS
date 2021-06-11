@@ -10,20 +10,32 @@ class DetailProduk extends StatefulWidget {
 class _DetailProdukState extends State<DetailProduk> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+     return Scaffold(
+     //backgroundColor: Colors.black,
         appBar: AppBar(
-          title: Text('Detail Produk'),
+          elevation: 0,
           backgroundColor: Colors.indigo,
+          title: Text("Detail Produk"),
         ),
         body: Container(
+           decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topRight,
+            end: Alignment.bottomLeft,
+            colors: [Colors.indigo, Colors.indigo],
+          ),
+        ),
+        
             child: StreamBuilder<QuerySnapshot>(
+              
           stream: DatabaseProduk.readProduk(),
           builder: (context, snapshot) {
             if (snapshot.hasError) {
               return Text('Something went wrong');
             } else if (snapshot.hasData || snapshot.data != null) {
               return ListView.separated(
-                  separatorBuilder: (context, index) => SizedBox(height: 5.0),
+                  separatorBuilder: (context, index) => 
+                  SizedBox(height: 10),
                   itemCount: snapshot.data.docs.length,
                   itemBuilder: (context, index) {
                     var produkInfo = snapshot.data.docs[index].data();
@@ -37,6 +49,8 @@ class _DetailProdukState extends State<DetailProduk> {
                     String imageUrl = produkInfo['imageUrl'];
 
                     return Card(
+                      color: Colors.indigo[100],
+                      elevation: 3.0,
                       child: Center(
                         child: Column(
                           children: <Widget>[
@@ -56,6 +70,7 @@ class _DetailProdukState extends State<DetailProduk> {
                             SizedBox(
                               height: 20,
                             ),
+                            
                             new Text(
                               "Name : $namaProduk",
                               style: TextStyle(fontSize: 18.0),
@@ -122,9 +137,9 @@ class _DetailProdukState extends State<DetailProduk> {
                               child: Center(
                                   child: Image.network(
                                 imageUrl,
-                                height: 100,
+                                height: 200,
                                 fit: BoxFit.cover,
-                                width: 100,
+                                width: 200,
                               )),
                             ),
                           ],

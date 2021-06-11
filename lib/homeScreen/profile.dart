@@ -12,7 +12,7 @@ class ProfileScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text('Welcome'),
         //centerTitle: true,
-        backgroundColor: Colors.indigo[900],
+        backgroundColor: Colors.indigo,
       ),
       body: Container(
         decoration: BoxDecoration(
@@ -40,7 +40,7 @@ class ProfileScreen extends StatelessWidget {
                     SizedBox(width: 16),
                     Expanded(
                       child: Divider(
-                        thickness: 3,
+                        thickness: 5,
                         // color: Colors.white,
                       ),
                     ),

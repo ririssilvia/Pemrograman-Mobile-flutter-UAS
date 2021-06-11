@@ -44,17 +44,17 @@ class ProdukList extends StatelessWidget {
                         child: Text(
                           namaProduk,
                           style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 17),
+                              fontWeight: FontWeight.bold, fontSize: 20),
                         ),
                       ),
-                      Container(
-                        padding: EdgeInsets.only(right: 10),
-                        child: Text(
-                          code,
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 17),
-                        ),
-                      ),
+                      // Container(
+                      //   padding: EdgeInsets.only(right: 10),
+                      //   child: Text(
+                      //     code,
+                      //     style: TextStyle(
+                      //         fontWeight: FontWeight.bold, fontSize: 17),
+                      //   ),
+                      // ),
                     ]),
                     subtitle: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -64,30 +64,35 @@ class ProdukList extends StatelessWidget {
                           padding: EdgeInsets.only(top: 5),
                           child: Text(
                             kategori,
-                            style: TextStyle(fontSize: 10),
-                          ),
+                           style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 15),
                         ),
-                        Container(
-                          padding: EdgeInsets.only(top: 5),
-                          child: Text(
-                            deskripsi,
-                            style: TextStyle(fontSize: 15),
-                          ),
                         ),
+                        // Container(
+                        //   padding: EdgeInsets.only(top: 5),
+                        //   child: Text(
+                        //     deskripsi,
+                        //     style: TextStyle(fontSize: 15),
+                        //   ),
+                        // ),
                         Container(
                           padding: EdgeInsets.only(top: 5),
                           child: Text(
                             "$harga",
-                            style: TextStyle(fontSize: 15),
-                          ),
+                             style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 15),
                         ),
+                          ),
+                        
                         Container(
                           padding: EdgeInsets.only(top: 5),
                           child: Text(
                             "$stok",
-                            style: TextStyle(fontSize: 15),
-                          ),
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 15),
                         ),
+                          ),
+                        
                         //  Container(
                         //   padding: EdgeInsets.only(top: 5),
                         //   child: Text(

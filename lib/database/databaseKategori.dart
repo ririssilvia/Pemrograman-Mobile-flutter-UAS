@@ -21,7 +21,7 @@ class DatabaseKatgeori {
 
     await documentReferencer
         .set(data)
-        .whenComplete(() => print("Note kategori added to the database"))
+        .whenComplete(() => print("kategori added to the database"))
         .catchError((e) => print(e));
   }
 
@@ -40,15 +40,16 @@ class DatabaseKatgeori {
 
     await documentReferencer
         .update(data)
-        .whenComplete(() => print("Note Kategori updated in the database"))
+        .whenComplete(() => print("Kategori updated in the database"))
         .catchError((e) => print(e));
   }
 
   static Stream<QuerySnapshot> readKategori() {
-    CollectionReference notesItemCollection =
+    CollectionReference kategoriItemCollection =
         _mainCollection.doc(userUid).collection('kategori');
 
-    return notesItemCollection.snapshots();
+    //return notesItemCollection.snapshots();
+    return kategoriItemCollection.orderBy("namaKategori").snapshots();
   }
 
   static Future<void> deleteKategori({
@@ -59,7 +60,7 @@ class DatabaseKatgeori {
 
     await documentReferencer
         .delete()
-        .whenComplete(() => print('Note kategori deleted from the database'))
+        .whenComplete(() => print('kategori deleted from the database'))
         .catchError((e) => print(e));
   }
 }

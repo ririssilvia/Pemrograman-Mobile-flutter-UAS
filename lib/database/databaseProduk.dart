@@ -33,7 +33,7 @@ class DatabaseProduk {
 
     await documentReferencer
         .set(data)
-        .whenComplete(() => print("Note produk added to the database"))
+        .whenComplete(() => print("produk added to the database"))
         .catchError((e) => print(e));
   }
 
@@ -62,15 +62,16 @@ class DatabaseProduk {
 
     await documentReferencer
         .update(data)
-        .whenComplete(() => print("Note Produk updated in the database"))
+        .whenComplete(() => print("Produk updated in the database"))
         .catchError((e) => print(e));
   }
 
   static Stream<QuerySnapshot> readProduk() {
-    CollectionReference notesItemCollection =
+    CollectionReference produkItemCollection =
         _mainCollection.doc(userUid).collection('produk');
 
-    return notesItemCollection.snapshots();
+    //return produkItemCollection.snapshots();
+    return produkItemCollection.orderBy("kategori").snapshots();
   }
 
   static Future<void> deleteProduk({
@@ -81,7 +82,7 @@ class DatabaseProduk {
 
     await documentReferencer
         .delete()
-        .whenComplete(() => print('Note produk deleted from the database'))
+        .whenComplete(() => print(' produk deleted from the database'))
         .catchError((e) => print(e));
   }
 }

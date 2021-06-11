@@ -103,6 +103,8 @@ class EditProdukFormState extends State<EditProdukForm> {
                         return Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
+                            Icon(Icons.category,
+                              size: 25.0, ),
                             SizedBox(width: 50.0),
                             DropdownButton(
                                dropdownColor: Colors.indigo[50],
@@ -130,13 +132,6 @@ class EditProdukFormState extends State<EditProdukForm> {
                         );
                       }
                     }),
-               
-               
-               
-                
-                  
-               
-                
                 Padding(
                   padding: EdgeInsets.all(5),
                   child: TextField(
@@ -227,21 +222,44 @@ class EditProdukFormState extends State<EditProdukForm> {
                     ),
                   ),
                 ),
-          Container(
-              padding: EdgeInsets.all(20),
-              child: SizedBox(
-                width: MediaQuery.of(context).size.width - 20,
-                child: RawMaterialButton(
-                    padding: EdgeInsets.symmetric(vertical: 20.0),
-                    child: Text("Edit data",
-                        style: TextStyle(
-                            color: Colors.white, fontSize: 18.0)),
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30.0)),
-                    elevation: 5.0,
-                    fillColor: Colors.indigo,
+          // Container(
+          //     padding: EdgeInsets.all(20),
+          //     child: SizedBox(
+          //       width: MediaQuery.of(context).size.width - 20,
+          //       child: RawMaterialButton(
+          //           padding: EdgeInsets.symmetric(vertical: 20.0),
+          //           child: Text("Edit data",
+          //               style: TextStyle(
+          //                   color: Colors.white, fontSize: 18.0)),
+          //           shape: RoundedRectangleBorder(
+          //               borderRadius: BorderRadius.circular(30.0)),
+          //           elevation: 5.0,
+          //           fillColor: Colors.indigo,
+          //           onPressed: () async {
+          //             await DatabaseProduk.updateProduk(
+          //                 docId: widget.documentId,
+          //                 namaProduk: namaProdukController.text,
+          //                 code: codeController.text,
+          //                 kategori: selectedCurrency,
+          //                 deskripsi: deskripsiController.text,
+          //                 harga: int.tryParse(hargaController.text),
+          //                 stok: int.tryParse(stokController.text),
+          //                 imageUrl: imageUrlController.text);
+
+          //             Navigator.of(context).pop();
+          //           }),
+          //     )
+          //     )
+          Padding(
+            padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Container(
+                  child: FloatingActionButton.extended(
+                    //button with an optional icon and label
                     onPressed: () async {
-                      await DatabaseProduk.updateProduk(
+                    await DatabaseProduk.updateProduk(
                           docId: widget.documentId,
                           namaProduk: namaProdukController.text,
                           code: codeController.text,
@@ -252,8 +270,37 @@ class EditProdukFormState extends State<EditProdukForm> {
                           imageUrl: imageUrlController.text);
 
                       Navigator.of(context).pop();
-                    }),
-              ))
+                    },
+                    backgroundColor: Colors.indigo,
+                    icon: Icon(Icons.update),
+                    label: Text(
+                      'update data',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                ),
+
+                Container(
+                  width: 30,
+                ),
+                // tombol batal
+                Container(
+                  child: FloatingActionButton.extended(
+                    //button with an optional icon and label
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    backgroundColor: Colors.red,
+                    icon: Icon(Icons.cancel_schedule_send),
+                    label: Text(
+                      'Cancel',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
         ],
       ),
           )
