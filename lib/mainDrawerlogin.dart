@@ -79,15 +79,15 @@ class MainNavRegisterState extends State<MainNavRegister> {
               Text(
                 'EMAIL',
                 style: TextStyle(
-                    fontSize: 15,
+                    fontSize: 25,
                     fontWeight: FontWeight.bold,
                     color: Colors.black54),
               ),
               Text(
                 auth.currentUser.email,
                 style: TextStyle(
-                    fontSize: 25,
-                    color: Colors.deepPurple,
+                    fontSize: 20,
+                    color: Colors.black,
                     fontWeight: FontWeight.bold),
               ),
               SizedBox(height: 40),

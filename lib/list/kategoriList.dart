@@ -53,6 +53,7 @@ class KategoriList extends StatelessWidget {
                             padding: EdgeInsets.only(top: 5),
                             child: Text(
                               deskripsi,
+                              maxLines: 4,
                               overflow: TextOverflow.ellipsis,
                               style: TextStyle(
                                   fontSize: 15, fontWeight: FontWeight.w700),
@@ -97,9 +98,19 @@ class KategoriList extends StatelessWidget {
                             ),
                           ))),
                 );
-              });
+              }
+              );
         }
+        return Center(
+          child: CircularProgressIndicator(
+            valueColor: AlwaysStoppedAnimation<Color>(
+              Colors.black,
+            ),
+          ),
+        );
       },
-    ));
+    )
+    
+    );
   }
 }

@@ -42,11 +42,33 @@ class ProdukList extends StatelessWidget {
                           )),
                       Expanded(
                         child: ListTile(
-                          title: Text(
-                            namaProduk,
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 20),
+                            title: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Flexible(
+                          child: Padding(
+                            padding: EdgeInsets.only(right: 10, top: 1),
+                            child: Text(
+                              kategori,
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18,
+                                  color: Colors.indigo[900]),
+                            ),
                           ),
+                        ),
+                        Flexible(
+                          child: Padding(
+                            padding: EdgeInsets.only(top: 1),
+                            child: Text(
+                             namaProduk,
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 18),
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
                           subtitle: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisAlignment: MainAxisAlignment.start,
@@ -54,23 +76,7 @@ class ProdukList extends StatelessWidget {
                               Container(
                                 padding: EdgeInsets.only(top: 5),
                                 child: Text(
-                                  kategori,
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 15),
-                                ),
-                              ),
-                              // Container(
-                              //   padding: EdgeInsets.only(top: 5),
-                              //   child: Text(
-                              //     deskripsi,
-                              //     style: TextStyle(fontSize: 15),
-                              //   ),
-                              // ),
-                              Container(
-                                padding: EdgeInsets.only(top: 5),
-                                child: Text(
-                                  "$harga",
+                                  "Harga :$harga",
                                   style: TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontSize: 15),
@@ -80,55 +86,29 @@ class ProdukList extends StatelessWidget {
                               Container(
                                 padding: EdgeInsets.only(top: 5),
                                 child: Text(
-                                  "$stok",
+                                  "Stok :$stok",
                                   style: TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontSize: 15),
                                 ),
                               ),
-
-                              //  Container(
-                              //   padding: EdgeInsets.only(top: 5),
-                              //   child: Text(
-                              //     imageUrl,
-                              //     style: TextStyle(fontSize: 15),
-                              //   ),
-                              // ),
+                              Container(
+                                padding: EdgeInsets.only(top: 5),
+                                child: Text(
+                                  "Deskripsi :$deskripsi",
+                                  maxLines: 4,
+                                   overflow: TextOverflow.ellipsis,
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 15),
+                                ),
+                              ),
                             ],
                           ),
                           trailing: GestureDetector(
-                            // //widget untuk mendeteksi sentuhan
-                            // child: Icon(Icons.delete,
-                            //  color: Colors.red[800]),
-
-                            // onTap: ()  {
-                            //   showDialog(context: context, builder:(context) => AlertDialog(
-                            //     title : Text("Delete"),
-                            //     content: Text("Are you sure to delete list Produk? "),
-                            //     actions: <Widget>[
-                            //       FlatButton(onPressed: () {
-                            //         Navigator.pop(context);
-                            //       }, child: Text("Cancel")),
-                            //       FlatButton(onPressed: () async{
-                            //         await DatabaseProduk.deleteProduk(docId: docID);
-                            //         Navigator.pop(context);
-                            //       }, child: Text("Yes"))
-                            //     ],
-                            //   ));
-                            // },
                             child: Row(
                               mainAxisSize: MainAxisSize.min,
                               children: [
-                                // IconButton(
-                                //     icon: Icon(Icons.visibility, color: Colors.black),
-                                //     onPressed: () {
-                                //       // Navigator.push(
-                                //       //     context,
-                                //       //     MaterialPageRoute(
-                                //       //       builder: (context) =>
-                                //       //           DetailProduk(),
-                                //       //     ));
-                                //     }),
                                 //button hapus data
                                 IconButton(
                                   icon: Icon(Icons.delete,
@@ -176,9 +156,18 @@ class ProdukList extends StatelessWidget {
                         ),
                       )
                     ]));
-              });
+              }
+              );
         }
+        return Center(
+          child: CircularProgressIndicator(
+            valueColor: AlwaysStoppedAnimation<Color>(
+              Colors.black,
+            ),
+          ),
+        );
       },
-    ));
+    )
+    );
   }
 }

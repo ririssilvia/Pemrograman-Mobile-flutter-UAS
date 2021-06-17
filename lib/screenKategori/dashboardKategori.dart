@@ -31,7 +31,7 @@ class _DashboardKategoriState extends State<DashboardKategoriScreen> {
           ],
           elevation: 0,
           backgroundColor: Colors.indigo,
-          title: Text("Produk"),
+          title: Text("Kategori"),
         ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {

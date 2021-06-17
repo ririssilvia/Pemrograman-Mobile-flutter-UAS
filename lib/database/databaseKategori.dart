@@ -57,6 +57,7 @@ class DatabaseKatgeori {
   }) async {
     DocumentReference documentReferencer =
         _mainCollection.doc(userUid).collection('kategori').doc(docId);
+        _mainCollection.doc(userUid).collection('produk').doc(docId);
 
     await documentReferencer
         .delete()

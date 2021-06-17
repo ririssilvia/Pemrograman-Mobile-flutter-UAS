@@ -295,7 +295,7 @@ class _LoginPageState extends State<LoginPage> {
                                   fontWeight: FontWeight.bold,
                                   color: Colors.indigo),
                             ),
-                            SizedBox(height: 5),
+                            //SizedBox(height: 5),
                             GestureDetector(
                               onTap: () {
                                 Navigator.push(
